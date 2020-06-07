@@ -105,6 +105,10 @@ app.get("/api/users/logout", auth, (req, res) => {
   });
 });
 
+app.get("/api/hello", (req, res) => {
+  res.send("hi");
+});
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
