@@ -6,9 +6,10 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
-const { User } = require("./models/User");
 const db_info = require("./db_info");
 const mongoose = require("mongoose");
+const { auth } = require("./middleware/auth");
+const { User } = require("./models/User");
 
 var app = express();
 
@@ -41,7 +42,7 @@ app.use("/", indexRouter);
 app.use("/users", usersRouter);
 
 // 회원가입 정보를 DB에 저장
-app.post("/register", (req, res) => {
+app.post("/api/users/register", (req, res) => {
   console.log(res.body);
   const user = new User(req.body);
   user.save((err, userInfo) => {
@@ -79,6 +80,19 @@ app.post("/login", (req, res) => {
           .json({ loginSuccess: true, userId: user._id });
       });
     });
+  });
+});
+
+// role 0 -> 일반 / role 1 -> 관리자
+app.get("/api/users/auth", auth, (req, res) => {
+  // 미들웨어 통과. -> authentication true
+  res.status(200).json({
+    _id: req.user._id,
+    isAdmin: req.user.role === 0 ? false : true,
+    isAuth: true,
+    email: req.user.email,
+    name: req.user.name,
+    role: req.user.role,
   });
 });
 
