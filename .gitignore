@@ -2,6 +2,7 @@
 
 #db_info
 /db_info.js
+/server/db_info.js
 #
 
 # dependencies

@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-var app = require("../server");
+var app = require("../server/server");
 var debug = require("debug")("react-web:server");
 var http = require("http");
 
