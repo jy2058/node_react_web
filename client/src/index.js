@@ -3,11 +3,19 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
+import LoginPage from "./components/views/LoginPage/LoginPage";
+// import LoginPage from "./components/views/LoginPage/SignIn copy 2";
+// import { Provider } from "react-redux";
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
+    {/* <LoginPage /> */}
   </React.StrictMode>,
+  // <Provider>
+  //   store={}
+  //   <App />
+  // </Provider>,
   document.getElementById("root")
 );
 

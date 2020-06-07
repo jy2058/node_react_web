@@ -1,8 +1,7 @@
 // import React from "react";
-import React, { useEffect } from "react";
+import React, { useEffect, Component } from "react";
 import axios from "axios";
-
-console.log("landing 1");
+import { withRouter } from "react-router-dom";
 
 function LandingPage() {
   useEffect(() => {
@@ -12,6 +11,5 @@ function LandingPage() {
   }, []);
   return <div>LandingPage sfsf</div>;
 }
-console.log("a");
 
-export default LandingPage;
+export default withRouter(LandingPage);
